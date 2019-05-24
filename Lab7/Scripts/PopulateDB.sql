@@ -16,6 +16,6 @@ create table [Order] (
 	PRIMARY KEY(ProductId, CustomerId),
 	FOREIGN key (ProductId) REFERENCES Product(Id),
 	FOREIGN key (CustomerId) REFERENCES Customer(Id),
-	[Count] int check ([Count] > 0)
+	[Count] int not null check ([Count] > 0) 
 )
 
