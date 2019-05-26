@@ -20,7 +20,7 @@
           </Key>
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
-          <Property Name="Count" Type="int" />
+          <Property Name="Count" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -96,7 +96,7 @@
           </Key>
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Int32" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="ProductsModel.FK__Order__CustomerI__36B12243" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="Product" Relationship="ProductsModel.FK__Order__ProductId__35BCFE0A" FromRole="Order" ToRole="Product" />
         </EntityType>
