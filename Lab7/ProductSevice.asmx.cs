@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab7.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,21 +19,21 @@ namespace Lab7
         }
 
         [WebMethod]
-        public dynamic Products()
+        public List<ProductModel> Products()
         {
-            return productsEntities.Products.Select(x => new { Id = x.Id, Name = x.Name, Price = x.Price }).ToList();
+            return productsEntities.Products.Select(x => new ProductModel { Id = x.Id, Name = x.Name, Price = x.Price }).ToList();
         }
 
         [WebMethod]
-        public dynamic Customers()
+        public List<CustomerModel> Customers()
         {
-            return productsEntities.Customers.Select(x => new { Id = x.Id, Name = x.Name, Age = x.Age }).ToList();
+            return productsEntities.Customers.Select(x => new CustomerModel { Id = x.Id, Name = x.Name, Age = x.Age }).ToList();
         }
 
         [WebMethod]
-        public dynamic Orders()
+        public List<OrderModel> Orders()
         {
-            return productsEntities.Orders.Select(x => new { Count = x.Count, CustomerId = x.CustomerId, ProductId = x.ProductId }).ToList();
+            return productsEntities.Orders.Select(x => new OrderModel { Count = x.Count, CustomerId = x.CustomerId, ProductId = x.ProductId }).ToList();
         }
 
     }
