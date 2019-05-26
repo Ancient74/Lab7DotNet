@@ -21,7 +21,7 @@ namespace Lab7
         [WebMethod]
         public List<ProductModel> Products()
         {
-            return productsEntities.Products.Select(x => new ProductModel(x)).ToList();
+            return productsEntities.Products.Select(x => new ProductModel { Id = x.Id, Name = x.Name, Price = x.Price }).ToList();
         }
 
         [WebMethod]
@@ -65,7 +65,7 @@ namespace Lab7
         [WebMethod]
         public List<CustomerModel> Customers()
         {
-            return productsEntities.Customers.Select(x => new CustomerModel(x)).ToList();
+            return productsEntities.Customers.Select(x => new CustomerModel { Id = x.Id, Name = x.Name, Age = x.Age }).ToList();
         }
 
         [WebMethod]
@@ -109,7 +109,7 @@ namespace Lab7
         [WebMethod]
         public List<OrderModel> Orders()
         {
-            return productsEntities.Orders.Select(x => new OrderModel(x)).ToList();
+            return productsEntities.Orders.Select(x => new OrderModel { Count = x.Count, CustomerId = x.CustomerId, ProductId = x.ProductId }).ToList();
         }
 
         [WebMethod]
