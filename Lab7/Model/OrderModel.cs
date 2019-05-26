@@ -7,7 +7,10 @@ namespace Lab7.Model
 {
     public class OrderModel
     {
+        public OrderModel()
+        {
 
+        }
         public OrderModel(Order order)
         {
             ProductId = order.ProductId;

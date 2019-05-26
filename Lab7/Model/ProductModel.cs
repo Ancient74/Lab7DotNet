@@ -7,6 +7,10 @@ namespace Lab7.Model
 {
     public class ProductModel
     {
+        public ProductModel()
+        {
+
+        }
         public ProductModel(Product product)
         {
             Id = product.Id;

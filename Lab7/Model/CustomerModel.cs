@@ -7,6 +7,10 @@ namespace Lab7.Model
 {
     public class CustomerModel
     {
+        public CustomerModel()
+        {
+
+        }
         public CustomerModel(Customer customer)
         {
             Id = customer.Id;
