@@ -77,13 +77,13 @@
   <ItemGroup>
     <Content Include="ProductModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProductModel.edmx</DependentUpon>
       <LastGenOutput>ProductModel.Context.cs</LastGenOutput>
+      <DependentUpon>ProductModel.edmx</DependentUpon>
     </Content>
     <Content Include="ProductModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProductModel.edmx</DependentUpon>
       <LastGenOutput>ProductModel.cs</LastGenOutput>
+      <DependentUpon>ProductModel.edmx</DependentUpon>
     </Content>
     <Content Include="ProductService.asmx" />
     <Content Include="Web.config" />
