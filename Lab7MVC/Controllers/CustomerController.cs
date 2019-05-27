@@ -1,4 +1,5 @@
-﻿using Lab7Sevice;
+﻿using Lab7Service.Model;
+using Lab7Sevice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +19,13 @@ namespace Lab7MVC.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            return View();
+            return View(service.Customers());
         }
 
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(service.Customer(id));
         }
 
         // GET: Customer/Create
@@ -40,7 +41,10 @@ namespace Lab7MVC.Controllers
             try
             {
                 // TODO: Add insert logic here
-
+                CustomerModel model = new CustomerModel();
+                model.Age = int.Parse(collection["Age"]);
+                model.Name = collection["Name"];
+                service.AddCustomer(model);
                 return RedirectToAction("Index");
             }
             catch
@@ -52,7 +56,7 @@ namespace Lab7MVC.Controllers
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(service.Customer(id));
         }
 
         // POST: Customer/Edit/5
@@ -62,7 +66,10 @@ namespace Lab7MVC.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                CustomerModel model = new CustomerModel();
+                model.Age = int.Parse(collection["Age"]);
+                model.Name = collection["Name"];
+                service.UpdateCustomer(id, model);
                 return RedirectToAction("Index");
             }
             catch
@@ -74,7 +81,7 @@ namespace Lab7MVC.Controllers
         // GET: Customer/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(service.Customer(id));
         }
 
         // POST: Customer/Delete/5
@@ -84,7 +91,7 @@ namespace Lab7MVC.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                service.DeleteCustomer(id);
                 return RedirectToAction("Index");
             }
             catch
