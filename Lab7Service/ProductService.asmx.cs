@@ -1,20 +1,19 @@
-﻿using Lab7Service;
-using Lab7Service.Model;
+﻿using Lab7Service.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
 
-namespace Lab7Sevice
+namespace Lab7Service
 {
     [WebService(Namespace = "http://lab7_my.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
-    public class ProductSevice : System.Web.Services.WebService
+    public class ProductService : System.Web.Services.WebService
     {
         ProductsEntities productsEntities;
-        public ProductSevice()
+        public ProductService()
         {
             productsEntities = new ProductsEntities();
         }
@@ -114,31 +113,29 @@ namespace Lab7Sevice
         }
 
         [WebMethod]
-        public OrderModel Order(int id)
+        public OrderModel Order(int customerId, int productId)
         {
-            var ord = productsEntities.Orders.Find(id);
+            var ord = productsEntities.Orders.FirstOrDefault(x => x.CustomerId == customerId && x.ProductId == productId);
             if (ord == null)
                 return null;
 
             return new OrderModel(ord);
         }
         [WebMethod]
-        public void DeleteOrder(int id)
+        public void DeleteOrder(int customerId, int productId)
         {
-            productsEntities.Orders.Remove(productsEntities.Orders.Find(id));
+            productsEntities.Orders.Remove(productsEntities.Orders.FirstOrDefault(x => x.CustomerId == customerId && x.ProductId == productId));
             productsEntities.SaveChanges();
         }
 
         [WebMethod]
-        public void UpdateOrder(int id, OrderModel model)
+        public void UpdateOrder(int customerId, int productId, OrderModel model)
         {
-            var ord = productsEntities.Orders.Find(id);
+            var ord = productsEntities.Orders.FirstOrDefault(x => x.CustomerId == customerId && x.ProductId == productId);
             if (ord == null)
                 return;
 
             ord.Count = model.Count;
-            ord.CustomerId = model.CustomerId;
-            ord.ProductId = model.ProductId;
             productsEntities.SaveChanges();
         }
 

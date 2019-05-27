@@ -1,5 +1,5 @@
-﻿using Lab7Service.Model;
-using Lab7Sevice;
+﻿using Lab7Service;
+using Lab7Service.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace Lab7MVC.Controllers
 {
     public class CustomerController : Controller
     {
-        ProductSevice service = new ProductSevice();
+        ProductService service = new ProductService();
 
         public CustomerController()
         {

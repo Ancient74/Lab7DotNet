@@ -24,8 +24,8 @@ namespace Lab7.ServiceModel {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="ProductSeviceSoap", Namespace="http://lab7_my.org/")]
-    public partial class ProductSevice : System.Web.Services.Protocols.SoapHttpClientProtocol {
+    [System.Web.Services.WebServiceBindingAttribute(Name="ProductServiceSoap", Namespace="http://lab7_my.org/")]
+    public partial class ProductService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback ProductsOperationCompleted;
         
@@ -58,8 +58,8 @@ namespace Lab7.ServiceModel {
         private System.Threading.SendOrPostCallback AddOrderOperationCompleted;
         
         /// <remarks/>
-        public ProductSevice() {
-            this.Url = "http://localhost:62430/ProductSevice.asmx";
+        public ProductService() {
+            this.Url = "http://localhost:65453/ProductService.asmx";
         }
         
         /// <remarks/>
@@ -545,16 +545,18 @@ namespace Lab7.ServiceModel {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://lab7_my.org/Order", RequestNamespace="http://lab7_my.org/", ResponseNamespace="http://lab7_my.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public OrderModel Order(int id) {
+        public OrderModel Order(int customerId, int productId) {
             object[] results = this.Invoke("Order", new object[] {
-                        id});
+                        customerId,
+                        productId});
             return ((OrderModel)(results[0]));
         }
         
         /// <remarks/>
-        public System.IAsyncResult BeginOrder(int id, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginOrder(int customerId, int productId, System.AsyncCallback callback, object asyncState) {
             return this.BeginInvoke("Order", new object[] {
-                        id}, callback, asyncState);
+                        customerId,
+                        productId}, callback, asyncState);
         }
         
         /// <remarks/>
@@ -564,17 +566,18 @@ namespace Lab7.ServiceModel {
         }
         
         /// <remarks/>
-        public void OrderAsync(int id) {
-            this.OrderAsync(id, null);
+        public void OrderAsync(int customerId, int productId) {
+            this.OrderAsync(customerId, productId, null);
         }
         
         /// <remarks/>
-        public void OrderAsync(int id, object userState) {
+        public void OrderAsync(int customerId, int productId, object userState) {
             if ((this.OrderOperationCompleted == null)) {
                 this.OrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnOrderOperationCompleted);
             }
             this.InvokeAsync("Order", new object[] {
-                        id}, this.OrderOperationCompleted, userState);
+                        customerId,
+                        productId}, this.OrderOperationCompleted, userState);
         }
         
         private void OnOrderOperationCompleted(object arg) {
@@ -586,15 +589,17 @@ namespace Lab7.ServiceModel {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://lab7_my.org/DeleteOrder", RequestNamespace="http://lab7_my.org/", ResponseNamespace="http://lab7_my.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void DeleteOrder(int id) {
+        public void DeleteOrder(int customerId, int productId) {
             this.Invoke("DeleteOrder", new object[] {
-                        id});
+                        customerId,
+                        productId});
         }
         
         /// <remarks/>
-        public System.IAsyncResult BeginDeleteOrder(int id, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginDeleteOrder(int customerId, int productId, System.AsyncCallback callback, object asyncState) {
             return this.BeginInvoke("DeleteOrder", new object[] {
-                        id}, callback, asyncState);
+                        customerId,
+                        productId}, callback, asyncState);
         }
         
         /// <remarks/>
@@ -603,17 +608,18 @@ namespace Lab7.ServiceModel {
         }
         
         /// <remarks/>
-        public void DeleteOrderAsync(int id) {
-            this.DeleteOrderAsync(id, null);
+        public void DeleteOrderAsync(int customerId, int productId) {
+            this.DeleteOrderAsync(customerId, productId, null);
         }
         
         /// <remarks/>
-        public void DeleteOrderAsync(int id, object userState) {
+        public void DeleteOrderAsync(int customerId, int productId, object userState) {
             if ((this.DeleteOrderOperationCompleted == null)) {
                 this.DeleteOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteOrderOperationCompleted);
             }
             this.InvokeAsync("DeleteOrder", new object[] {
-                        id}, this.DeleteOrderOperationCompleted, userState);
+                        customerId,
+                        productId}, this.DeleteOrderOperationCompleted, userState);
         }
         
         private void OnDeleteOrderOperationCompleted(object arg) {
@@ -625,16 +631,18 @@ namespace Lab7.ServiceModel {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://lab7_my.org/UpdateOrder", RequestNamespace="http://lab7_my.org/", ResponseNamespace="http://lab7_my.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void UpdateOrder(int id, OrderModel model) {
+        public void UpdateOrder(int customerId, int productId, OrderModel model) {
             this.Invoke("UpdateOrder", new object[] {
-                        id,
+                        customerId,
+                        productId,
                         model});
         }
         
         /// <remarks/>
-        public System.IAsyncResult BeginUpdateOrder(int id, OrderModel model, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginUpdateOrder(int customerId, int productId, OrderModel model, System.AsyncCallback callback, object asyncState) {
             return this.BeginInvoke("UpdateOrder", new object[] {
-                        id,
+                        customerId,
+                        productId,
                         model}, callback, asyncState);
         }
         
@@ -644,17 +652,18 @@ namespace Lab7.ServiceModel {
         }
         
         /// <remarks/>
-        public void UpdateOrderAsync(int id, OrderModel model) {
-            this.UpdateOrderAsync(id, model, null);
+        public void UpdateOrderAsync(int customerId, int productId, OrderModel model) {
+            this.UpdateOrderAsync(customerId, productId, model, null);
         }
         
         /// <remarks/>
-        public void UpdateOrderAsync(int id, OrderModel model, object userState) {
+        public void UpdateOrderAsync(int customerId, int productId, OrderModel model, object userState) {
             if ((this.UpdateOrderOperationCompleted == null)) {
                 this.UpdateOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateOrderOperationCompleted);
             }
             this.InvokeAsync("UpdateOrder", new object[] {
-                        id,
+                        customerId,
+                        productId,
                         model}, this.UpdateOrderOperationCompleted, userState);
         }
         
